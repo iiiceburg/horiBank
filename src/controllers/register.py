@@ -29,7 +29,7 @@ class Register:
             acc = random.randint(100000000000,999999999999)
             username = self.first.lower()+"."+self.last[0].lower()
             password = self.phone[0:2] + self.first[2].upper() + self.email[0].lower() + str(len(self.first)) + self.last[:2].upper() + self.auth[5] + self.first[1] + self.last[1] + str(acc)[5]
-            data = self.first + " " + self.last + " " + str(acc) +" " + username +" " + password +" " + self.email + " " + self.phone + " " + str(self.idCard) + " " + str(self.balance) + self.auth +  "\n"
+            data = self.first + " " + self.last + " " + str(acc) +" " + username +" " + password +" " + self.email + " " + self.phone + " " + str(self.idCard) + " " + str(self.balance) + " " + self.auth +  "\n"
             file.writelines(data)
             lines = "="*20
             result = "Name : " + self.first + " " + self.last + " Email : " +self.email + " Phone : " + self.phone + ""
@@ -38,8 +38,8 @@ class Register:
 
 
     def acc() :
-        fname = input("Enter Fname : ")
-        lname = input("Enter Lname : ")
+        fname = input("Enter Firstname : ")
+        lname = input("Enter Lastname : ")
         email = input("Enter mail : ")
         while "@" not in email : 
             email = input("Enter mail : ")       
