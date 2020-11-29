@@ -38,7 +38,7 @@ class services():
                 account = input("Enter Account number to transfer : ")
             endPoint = accNumber.index(account)
             print("Account Name : %s"%name[endPoint])
-            blcData = balance[endPoint] # Find position of balance by endpoint
+            blcData = balance[endPoint] # Fisnd position of balance by endpoint
             print("Hori+ can transfer money 0.01 to 10,000,000.00")
             amount = float(input("Enter amount : "))
             while amount <=0 :
@@ -63,6 +63,8 @@ class services():
             while pinAuth not in pin:
                 print("Invalid pin! Please try again.")
                 pinAuth = input("Enter pin : ")
+            print("You can withdrawal only 100,500,100")
+            amount = int(input("Enter amount for withrawal : "))
 
             
 
