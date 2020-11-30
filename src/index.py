@@ -1,5 +1,6 @@
 from controllers.login import Login
 from controllers.register import Register
+from services.servicesTransac import Services
 
 lines = "="*20
 head = lines + " Welcome to Hori+ Bank " + lines
@@ -19,11 +20,11 @@ def menu():
     if menu == "1" :
         print("\n=== Login === \n ")
         Login.login()
+        Services.servMenu()
     elif menu == "2" :
         print("\n=== Registration === \n")
         Register.acc()
+        Services.servMenu()
 
-# def transaction():
-#     pass
 welcome()
 menu()    

@@ -1,5 +1,7 @@
 import string
 import random
+import base64
+
 letter = list(string.ascii_lowercase)
 
 class Register:
@@ -12,28 +14,19 @@ class Register:
         self.balance = balance
         self.auth = auth
     
-    #@method generate number
-    # def rand_x_digit_num(x, leading_zeroes=True):    
-    #     if not leading_zeroes:
-    #     # wrap with str() for uniform results
-    #         return random.randint(10**(x-1), 10**x-1)  
-    #     else:
-    #         if x > 6000:
-    #             return ''.join([str(random.randint(0, 9)) for i in range(x)])
-    #         else:
-    #             return '{0:0{x}d}'.format(random.randint(0, 10**x-1), x=x)
-
-    
+   
     def __str__(self):
         with open("./db/account.txt","a+") as file :
             acc = random.randint(100000000000,999999999999)
             username = self.first.lower()+"."+self.last[0].lower()
             password = self.phone[0:2] + self.first[2].upper() + self.email[0].lower() + str(len(self.first)) + self.last[:2].upper() + self.auth[5] + self.first[1] + self.last[1] + str(acc)[5]
-            data = self.first + " " + self.last + " " + str(acc) +" " + username +" " + password +" " + self.email + " " + self.phone + " " + str(self.idCard) + " " + str(self.balance) + " " + self.auth +  "\n"
+            message_bytes = password.encode('ascii')
+            base64_bytes = base64.b64encode(message_bytes)
+            data = self.first + " " + self.last + " " + str(acc) +" " + username +" " + str(base64_bytes) +" " + self.email + " " + self.phone + " " + str(self.idCard) + " " + str(self.balance) + " " + self.auth +  "\n"
             file.writelines(data)
             lines = "="*20
             result = "Name : " + self.first + " " + self.last + " Email : " +self.email + " Phone : " + self.phone + ""
-            final = "\n" + lines + " Your Data Information " + lines + "\n" + result + "\n" + lines +"  Username & Password  " +lines+ "\n" + "Username : " + username + "\n" + "Password : " + password 
+            final = "\n" + lines + " Your Data Information " + lines + "\n" + result + "\n" + lines +"  Username & Password  " +lines+ "\n" + "Username : " + username + "\n" + "Password : " + password
         return final
 
 
