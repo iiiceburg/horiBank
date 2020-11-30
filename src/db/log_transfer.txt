@@ -1,0 +1,2 @@
+2020-11-30 23:57:09.133592 Status : Transfer completed  From : Chanisara Sakdamanee To : Chanisara Sakdamanee Account : 437262121469 Amount : 200.0 Balance : 800.0
+2020-12-01 00:11:01.025174 Status : Transfer completed  From : Chanisara Sakdamanee To : Chanisara Sakdamanee Account : 437262121469 Amount : 2000.0 Balance : 2600.0

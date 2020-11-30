@@ -14,7 +14,6 @@ class Login() :
                 message = message_bytes.decode('ascii')
                 userName.append(lst[3])
                 passWord.append(message)
-            print(passWord)
         username = input("Enter username : ")
         password = input("Enter password : ")
         while username not in userName or password not in passWord :

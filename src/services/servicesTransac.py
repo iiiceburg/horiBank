@@ -46,25 +46,23 @@ class Services():
                 while amount <=0 :
                     print("Hori+ can transfer money 0.01 to 10,000,000.00")
                     amount = float(input("Enter amount : "))
-                total = float(blcData) + amount
-                # print("Total = %.2f"%total)
-                balance[endPoint] = str(total)
+                total1 = float(blcData) + amount
+                # print("Total = %.2f"%total)               
                 confirm = input("Are you sure to tranfer? (y/n) : ")
                 while confirm.lower() not in ["y","n","yes","no"]:
                     print("Please select Yes or No (y/n)")
                     confirm = input("Are you sure to tranfer? (y/n) : ")
                 if confirm.lower() in ["yes","y"]:
                         with open("./db/log_transfer.txt","a+") as file:
-                            status =  str(dt_object) +" Status : Transfer completed "  + " Name : " + name[endPoint] + " Account : " + account + " Amount : " + str(amount) + " Balance : " +  str(total)
+                            status =  str(dt_object) +" Status : Transfer completed "  + " From : " + name[endPoint] + " To : " + name[endPoint] + " Account : " + account + " Amount : " + str(amount) + " Balance : " +  str(total1)
                             file.writelines(status + "\n")
                         print("### Status : Completed! ###")
-                        print("Balance : %.2f "%total)
 
                 else :
                     with open("./db/log_transfer.txt","a+") as file:
                         status =  str(dt_object) +" Status : Transfer Cancel "  + " Name : " + name[endPoint] + " Account : " + account + " Amount : " + str(amount) + " Balance : " +  str(blcData)
                         file.writelines(status + "\n")
-                    print("Balance : %.2f "%blcData)
+                        print("### Status : Cancel! ###") 
 
             #Witdrawal service                   
                 
@@ -81,19 +79,19 @@ class Services():
                 accName = name[pinEndpoint]
                 print("Account name : %s "%(accName))
                 print("Balance : %.2f"%(float(blcCheck)))
-                amount = int(input("Enter amount for withrawal : "))
+                amount = int(input("Enter amount for withdrawal : "))
                 total =  float(blcCheck) - float(amount)
                 while amount > float(blcCheck) :
-                    print("You can't withrawal cash more than your balance in account")
+                    print("You can't withdrawal cash more than your balance in account")
                     print(blcCheck)
-                    amount = int(input("Enter amount for withrawal : "))
+                    amount = int(input("Enter amount for withdrawal : "))
                 confirm = input("Are you sure to tranfer? (y/n) : ")
                 while confirm.lower() not in ["y","n","yes","no"]:
                     print("Please select Yes or No (y/n)")
                     confirm = input("Are you sure to tranfer? (y/n) : ")
                 if confirm.upper() in ["YES","Y"]:
                     with open("./db/log_withdrawal.txt","a+") as file:
-                        status =  str(dt_object) +" Status : Withdrawal completed "  + " Name : " + name[pinEndpoint] + " Account : " + accounCheck + " Amount : " + str(amount) + " Balance : " +  str(total)
+                        status =  str(dt_object) +" Status : Withdrawal completed "  + " Name : " + name[pinEndpoint] +  " Account : " + accounCheck + " Amount : " + str(amount) + " Balance : " +  str(total)
                         file.writelines(status + "\n")
                     print("### Status : Completed! ###")
                     print("Balance : %.2f "%total)
@@ -107,11 +105,11 @@ class Services():
             #Make a deposit service
 
             elif menu == "3" :
-                print("\Make a deposit service")
-                account = input("Enter Account number to transfer : ")
+                print("\nMake a deposit service")
+                account = input("Enter Account number to deposit : ")
                 while account not in accNumber:
-                    print("Not found account number for transfer!")
-                    account = input("Enter Account number to transfer : ")
+                    print("Not found account number for deposit!")
+                    account = input("Enter Account number to deposit : ")
                 endPoint = accNumber.index(account)
                 print("Account Name : %s"%name[endPoint])                
                 pinAuth = input("Enter pin : ")
